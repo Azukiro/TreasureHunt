@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using TreasureMap.Attribute;
 using TreasureMap.Services;
 using TreasureMap.Utils;
 
@@ -26,7 +25,7 @@ public static class ValidatorHelper
             throw new ArgumentNullException(nameof(entity));
         }
         
-        var validationResults = new List<ValidationResult>();
+        List<ValidationResult> validationResults = [];
         var services = new Dictionary<Type, object>
         {
             { typeof(IMapService), mapService },

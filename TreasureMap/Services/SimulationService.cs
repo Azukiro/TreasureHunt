@@ -9,16 +9,23 @@ namespace TreasureMap.Services;
 /// <summary>
 /// Service for the simulation.
 /// </summary>
-public class SimulationService(IMapService mapService,IStateService stateService) : ISimulationService
+public class SimulationService(
+    IMapService mapService,
+    IStateService stateService,
+    IMovementStrategy moveForwardStrategy,
+    IMovementStrategy turnRightStrategy,
+    IMovementStrategy turnLeftStrategy)
+    : ISimulationService
 {
+
     /// <summary>
     /// The strategies for the movements.
     /// </summary>
     private readonly Dictionary<Movement, IMovementStrategy> _strategies = new()
     {
-        { Movement.A, new MoveForwardStrategy(mapService, stateService) },
-        { Movement.D, new TurnRightStrategy() },
-        { Movement.G, new TurnLeftStrategy() }
+        { Movement.A, moveForwardStrategy },
+        { Movement.D, turnRightStrategy },
+        { Movement.G, turnLeftStrategy }
     };
 
     public void Load(string map)

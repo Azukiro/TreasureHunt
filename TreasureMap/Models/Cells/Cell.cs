@@ -1,23 +1,14 @@
-﻿using System.ComponentModel.DataAnnotations;
-using TreasureMap.Validators.Attribute;
+﻿using TreasureMap.Validators.Attribute;
 
 namespace TreasureMap.Models.Cells;
 
 /// <summary>
-/// Base class for a cell in the map.
+///     Base class for a cell in the map.
 /// </summary>
 public abstract class Cell
 {
     /// <summary>
-    /// Position of the cell in the map.
-    /// </summary>
-    [Required]
-    [PositionInMap]
-    [UniquePositionInMap]
-    public Position Position { get; set; }
-
-    /// <summary>
-    /// Constructor of the cell.
+    ///     Constructor of the cell.
     /// </summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
@@ -27,7 +18,14 @@ public abstract class Cell
     }
 
     /// <summary>
-    /// Determines if an adventurer can move to this cell.
+    ///     Position of the cell in the map.
+    /// </summary>
+    [PositionInMap]
+    [UniquePositionInMap]
+    public Position Position { get; }
+
+    /// <summary>
+    ///     Determines if an adventurer can move to this cell.
     /// </summary>
     /// <returns></returns>
     public virtual bool CanMoveTo()
@@ -36,7 +34,7 @@ public abstract class Cell
     }
 
     /// <summary>
-    /// Moves an adventurer to this cell.
+    ///     Moves an adventurer to this cell.
     /// </summary>
     /// <param name="adventurer"></param>
     public virtual void MoveTo(Adventurer adventurer)

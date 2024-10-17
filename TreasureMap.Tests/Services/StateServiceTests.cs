@@ -1,4 +1,5 @@
-﻿using TreasureMap.Models;
+﻿using TreasureMap.Enums;
+using TreasureMap.Models;
 using TreasureMap.Models.Cells;
 using TreasureMap.Services;
 
@@ -13,7 +14,7 @@ public class StateServiceTests
     {
         // Arrange
         _stateService.Reset();
-        var cell = new TreasureCell(0,0,1);
+        var cell = new TreasureCell(0, 0, 1);
 
         // Act
         _stateService.AddCell(cell);
@@ -29,7 +30,7 @@ public class StateServiceTests
     {
         // Arrange
         _stateService.Reset();
-        var adventurer = new Adventurer {Name = "John", Position = new Position(1, 1)};
+        var adventurer = new Adventurer("Lara", new Position(1, 1), Orientation.N, new Queue<Movement>());
 
         // Act
         _stateService.AddAdventurer(adventurer);
@@ -45,7 +46,7 @@ public class StateServiceTests
     {
         //Arrange
         _stateService.Reset();
-        
+
         // Act
         var result = _stateService.GetCell(new Position(5, 5));
 
@@ -73,7 +74,7 @@ public class StateServiceTests
     {
         //Arrange
         _stateService.Reset();
-        
+
         // Act
         var result = _stateService.GetAdventurers();
 

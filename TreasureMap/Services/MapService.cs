@@ -25,7 +25,7 @@ public class MapService(IStateService stateService) : IMapService
         var cells = stateService.GetCells();
         var adventurers = stateService.GetAdventurers();
         
-        List<ValidationResult> validationResults = new List<ValidationResult>();
+        List<ValidationResult> validationResults = [];
         validationResults.AddRange(
             cells.SelectMany(c => ValidatorHelper.Validate(c, this, stateService)
             ));

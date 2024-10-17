@@ -16,7 +16,7 @@ public class AdventurerDataWriter : IDataWriter
             throw new WriterBadTypeException<Adventurer>(typeof(object));
         }
         
-        return $"{IoConstants.Adventurer}{IoConstants.Separator}{adventurer.Name}{IoConstants.Separator}{adventurer.Position.X}{IoConstants.Separator}{adventurer.Position.Y}{IoConstants.Separator}{adventurer.Orientation}{IoConstants.Separator}{adventurer.TreasureCount}\n";
+        return $"{IoConstants.Adventurer}{IoConstants.Separator}{adventurer.Name}{IoConstants.Separator}{adventurer.Position.X}{IoConstants.Separator}{adventurer.Position.Y}{IoConstants.Separator}{adventurer.Orientation}{IoConstants.Separator}{adventurer.TreasureCollected}\n";
         
     }
 }
