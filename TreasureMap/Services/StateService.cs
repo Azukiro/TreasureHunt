@@ -10,9 +10,9 @@ public class StateService : IStateService
     
     private static StateService? _instance;
     
-    public static StateService GetInstance()
+    public static StateService Instance
     {
-        return _instance ??= new StateService();
+        get=> _instance ??= new StateService();
     }
     
     private StateService()
@@ -20,6 +20,7 @@ public class StateService : IStateService
     }
     
     #endregion
+    
     #region Properties
     /// <summary>
     ///  The bounding box of the map.
@@ -52,6 +53,13 @@ public class StateService : IStateService
     public void SetBoundingBox(BoundingBox boundingBox)
     {
         BoundingBox = boundingBox;
+    }
+
+    public void Reset()
+    {
+        BoundingBox = null;
+        Cells.Clear();
+        Adventurers.Clear();
     }
     
     #endregion

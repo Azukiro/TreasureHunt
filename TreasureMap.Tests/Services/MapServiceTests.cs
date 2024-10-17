@@ -53,7 +53,7 @@ public class MapServiceTests
         var ex = Assert.Throws<ValidationException>(() => _mapService.ValidateMap());
         foreach (var validationResult in validationResults)
         {
-            Assert.Contains(validationResult.ErrorMessage, ex.Message);
+            if (validationResult.ErrorMessage != null) Assert.Contains(validationResult.ErrorMessage, ex.Message);
         }
     }
     
@@ -73,7 +73,7 @@ public class MapServiceTests
         var ex = Assert.Throws<ValidationException>(() => _mapService.ValidateMap());
         foreach (var validationResult in validationResults)
         {
-            Assert.Contains(validationResult.ErrorMessage, ex.Message);
+            if (validationResult.ErrorMessage != null) Assert.Contains(validationResult.ErrorMessage, ex.Message);
         }
     }
     
@@ -93,7 +93,7 @@ public class MapServiceTests
         var ex = Assert.Throws<ValidationException>(() => _mapService.ValidateMap());
         foreach (var validationResult in validationResults)
         {
-            Assert.Contains(validationResult.ErrorMessage, ex.Message);
+            if (validationResult.ErrorMessage != null) Assert.Contains(validationResult.ErrorMessage, ex.Message);
         }
     }
     
@@ -113,7 +113,7 @@ public class MapServiceTests
         var ex = Assert.Throws<ValidationException>(() => _mapService.ValidateMap());
         foreach (var validationResult in validationResults)
         {
-            Assert.Contains(validationResult.ErrorMessage, ex.Message);
+            if (validationResult.ErrorMessage != null) Assert.Contains(validationResult.ErrorMessage, ex.Message);
         }
     }
     

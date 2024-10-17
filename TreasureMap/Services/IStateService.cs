@@ -48,4 +48,9 @@ public interface IStateService
     /// <returns></returns>
     List<Adventurer> GetAdventurers();
     
+    /// <summary>
+    /// Reset the state
+    /// </summary>
+    void Reset();
+    
 }
