@@ -4,7 +4,7 @@
 
 This project simulates adventurers exploring the Madre de Dios region in Peru, collecting treasures on a rectangular map. Adventurers move across plains, avoid impassable mountains, and collect treasures following a predefined sequence of moves. The system processes adventurer movements and treasure collection, and outputs the final state of the map.
 
-For full details on the problem and requirements, refer to the instructions in the PDF provided in the repository [this file](./instructions.pdf).
+For full details on the problem and requirements, refer to the instructions in the [PDF](./instructions.pdf) provided in the repository.
 
 
 ## Technologies Used
