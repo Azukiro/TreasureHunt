@@ -25,4 +25,5 @@ public class Position
         X = x;
         Y = y;
     }
+    
 }

@@ -24,16 +24,23 @@ public class EnumerableLengthAttribute : ValidationAttribute
         _maxLength = maxLength;
     }
     
-    public override bool IsValid(object? value)
+    protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
     {
         if (value is not System.Collections.IEnumerable enumerable)
         {
-            return false;
+            return ValidationResult.Success;
         }
         
         var count = enumerable.Cast<object?>().Count();
 
-        return count >= _minLength && count <= _maxLength;
+        if(count >= _minLength && count <= _maxLength)
+        {
+            return ValidationResult.Success;
+        }
+        else
+        {
+            return new ValidationResult($"The enumerable must have a length between {_minLength} and {_maxLength}.");
+        }
     }
     
 }

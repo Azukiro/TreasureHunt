@@ -9,29 +9,28 @@ namespace TreasureMap.Services;
 /// <summary>
 /// Service for the management of the map.
 /// </summary>
-public class MapService : IMapService
+public class MapService(IStateService stateService) : IMapService
 {
-    private readonly StateService _stateService = StateService.GetInstance();
     #region BusinessLogic
 
     public bool IsInsideMap(Position position)
     {
-        var boundingBox = _stateService.GetBoundingBox();
+        var boundingBox = stateService.GetBoundingBox();
         
         return position.X >= 0 && position.X < boundingBox.Width && position.Y >= 0 && position.Y < boundingBox.Height;
     }
 
     public void ValidateMap()
     {
-        var cells = _stateService.GetCells();
-        var adventurers = _stateService.GetAdventurers();
+        var cells = stateService.GetCells();
+        var adventurers = stateService.GetAdventurers();
         
         List<ValidationResult> validationResults = new List<ValidationResult>();
         validationResults.AddRange(
-            cells.SelectMany(c => ValidatorHelper.Validate(c, this)
+            cells.SelectMany(c => ValidatorHelper.Validate(c, this, stateService)
             ));
         validationResults.AddRange(
-            adventurers.SelectMany(c => ValidatorHelper.Validate(c, this)
+            adventurers.SelectMany(c => ValidatorHelper.Validate(c, this, stateService)
             ));
 
         if (validationResults.Count > 0)
@@ -43,14 +42,17 @@ public class MapService : IMapService
 
     public bool CanMoveAdventurer(Adventurer adventurer, Position potentialPosition)
     {
-        var cells = _stateService.GetCells();
-        var adventurers = _stateService.GetAdventurers();
+        var cells = stateService.GetCells();
+        var adventurers = stateService.GetAdventurers();
         
         var isInsideMap = IsInsideMap(potentialPosition);
+        
         var adventurerOnCase = adventurers.Where(a => a.Name != adventurer.Name)
             .Any(a => a.Position.X == potentialPosition.X && a.Position.Y == potentialPosition.Y);
+        
         var canMove =
-            cells.FirstOrDefault(c => c.Position.X == potentialPosition.X && c.Position.Y == potentialPosition.Y)?.CanMoveTo() ?? false;
+            cells.FirstOrDefault(c => c.Position.X == potentialPosition.X && c.Position.Y == potentialPosition.Y)?.CanMoveTo() ?? true;
+        
         return canMove && isInsideMap && !adventurerOnCase;
     }
 

@@ -8,8 +8,9 @@ var map = "C - 3 - 4\n" +
           "A - Lara - 1 - 1 - S - AADADAGGA";
 
 //Initialize the services
-IMapService mapService = new MapService();
 IStateService stateService = StateService.GetInstance();
+
+IMapService mapService = new MapService(stateService);
 SimulationService simulationService = new(mapService, stateService);
 
 //Play the simulation

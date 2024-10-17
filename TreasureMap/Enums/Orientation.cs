@@ -5,6 +5,7 @@
 /// </summary>
 public enum Orientation
 {
+    None,
     N,
     E,
     S,

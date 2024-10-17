@@ -30,6 +30,10 @@ public class Adventurer
         Movements = movements;
     }
 
+    public Adventurer()
+    {
+    }
+
     /// <summary>
     /// Adventurer's name.
     /// </summary>
@@ -51,8 +55,8 @@ public class Adventurer
     /// <summary>
     /// Orientation of the adventurer.
     /// </summary>
-    [Required]
-    public Orientation Orientation { get; set; }
+    [NotBe(Orientation.None)]
+    public Orientation Orientation { get; set; } = Orientation.None;
     
     /// <summary>
     /// Movements to be performed by the adventurer.

@@ -13,6 +13,7 @@ public abstract class Cell
     /// </summary>
     [Required]
     [PositionInMap]
+    [UniquePositionInMap]
     public Position Position { get; set; }
 
     /// <summary>
