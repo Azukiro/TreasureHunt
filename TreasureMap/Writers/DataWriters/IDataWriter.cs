@@ -5,7 +5,7 @@ namespace TreasureMap.Writers.DataWriters;
 /// <summary>
 /// Interface for the data writer.
 /// </summary>
-public interface IDataWriter : ISingleton
+public interface IDataWriter
 {
     /// <summary>
     /// Write the object to a string.

@@ -9,6 +9,6 @@ public static class WriterFactory
 {
     public static IDataWriter GetWriter(Type modelType)
     {
-        return (IDataWriter)AttributeFactory.GetInstance<WritableAttribute>(modelType);
+        return AttributeFactory.GetInstance<IDataWriter,WritableAttribute>(modelType);
     }
 }

@@ -18,31 +18,26 @@ public static class AttributeFactory
     /// <typeparam name="TAttribute">The type of the attribute to look for</typeparam>
     /// <returns></returns>
     /// <exception cref="InvalidOperationException"> If the instance type does not implement ISingleton or the GetInstance method is not found</exception>
-    public static ISingleton GetInstance<TAttribute>(Type modelType)where TAttribute : IoAttribute
+    public static TResult GetInstance<TResult,TAttribute>(Type modelType)where TAttribute : IoAttribute
     {
         var instanceType = AppDomain.CurrentDomain.GetAssemblies()
             .SelectMany(assembly => assembly.GetTypes())
             .FirstOrDefault(type => 
-                typeof(ISingleton).IsAssignableFrom(type) && 
+                typeof(TResult).IsAssignableFrom(type) && 
                 type.GetCustomAttribute<TAttribute>()?.ModelType == modelType);
         
         if (instanceType == null)
         {
             throw new InvalidOperationException($"No instance found for model type {modelType.Name}");
         }
-
-        MethodInfo? getInstanceMethod = instanceType.GetMethod("GetInstance", BindingFlags.Static | BindingFlags.Public);
-        if (getInstanceMethod == null)
+        
+        var instance = Activator.CreateInstance(instanceType);
+        if(instance == null)
         {
-            throw new InvalidOperationException($"GetInstance method not found on instance type {instanceType.Name}");
+            throw new InvalidOperationException($"No instance found for model type {modelType.Name}");
         }
+        
 
-        object? instance = getInstanceMethod.Invoke(null, null);
-        if (instance == null)
-        {
-            throw new InvalidOperationException($"Failed to retrieve the singleton instance of {instanceType.Name}");
-        }
-
-        return (ISingleton)instance;
+        return (TResult)instance;
     }
 }

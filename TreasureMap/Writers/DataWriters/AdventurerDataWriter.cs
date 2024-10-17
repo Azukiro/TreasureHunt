@@ -9,17 +9,6 @@ namespace TreasureMap.Writers.DataWriters;
 [Writable(typeof(Adventurer))]
 public class AdventurerDataWriter : IDataWriter
 {
-    private static AdventurerDataWriter? _instance;
-    
-    private AdventurerDataWriter()
-    {
-    }
-    
-    public static ISingleton GetInstance()
-    {
-        return _instance ??= new AdventurerDataWriter();
-    }
-    
     public string Write(object data)
     {
         if(data is not Adventurer adventurer)

@@ -10,20 +10,8 @@ namespace TreasureMap.Writers.DataWriters;
 /// Class to write the map data.
 /// </summary>
 [Writable(typeof(BoundingBox))]
-public class MapDataWriter : IDataWriter, ISingleton
+public class MapDataWriter : IDataWriter
 {
-    private static MapDataWriter? _instance;
-    
-    private MapDataWriter()
-    {
-    }
-    
-    public static ISingleton GetInstance()
-    {
-        return _instance ??= new MapDataWriter();
-    }
-    
-    
     public string Write(object data)
     {
         if (data is not BoundingBox boundingBox)

@@ -10,20 +10,8 @@ namespace TreasureMap.Writers.DataWriters;
 /// Class to write the mountain cell data.
 /// </summary>
 [Writable(typeof(MountainCell))]
-public class MountainCellDataWriter : IDataWriter, ISingleton
+public class MountainCellDataWriter : IDataWriter
 {
-    
-    private static MountainCellDataWriter? _instance;
-    
-    private MountainCellDataWriter()
-    {
-    }
-    
-    public static ISingleton GetInstance()
-    {
-        return _instance ??= new MountainCellDataWriter();
-    }
-    
     public string Write(object data)
     {
         if (data is not MountainCell mountainCell)

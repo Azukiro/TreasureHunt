@@ -10,18 +10,8 @@ namespace TreasureMap.Writers.DataWriters;
 /// Class to write the treasure cell data.
 /// </summary>
 [Writable(typeof(TreasureCell))]
-public class TreasureCellDataWriter : IDataWriter, ISingleton
+public class TreasureCellDataWriter : IDataWriter
 {
-    private static TreasureCellDataWriter? _instance;
-    
-    private TreasureCellDataWriter()
-    {
-    }
-    
-    public static ISingleton GetInstance()
-    {
-        return _instance ??= new TreasureCellDataWriter();
-    }
     public string Write(object data)
     {
         if (data is not TreasureCell treasureCell)

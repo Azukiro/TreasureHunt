@@ -11,17 +11,6 @@ namespace TreasureMap.Parsers.DataParsers;
 [Parsable(typeof(MountainCell))]
 public class MountainCellParser : IDataParser
 {
-    private static MountainCellParser? _instance;
-
-    private MountainCellParser()
-    {
-    }
-
-    public static ISingleton GetInstance()
-    {
-        return _instance ??= new MountainCellParser();
-    }
-
     /// <summary>
     /// Parse a line into a mountain cell and add to the map.
     /// </summary>

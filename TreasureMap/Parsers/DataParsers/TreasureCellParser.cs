@@ -11,17 +11,6 @@ namespace TreasureMap.Parsers.DataParsers;
 [Parsable(typeof(TreasureCell))]
 public class TreasureCellParser : IDataParser
 {
-    private static TreasureCellParser? _instance;
-
-    private TreasureCellParser()
-    {
-    }
-
-    public static ISingleton GetInstance()
-    {
-        return _instance ??= new TreasureCellParser();
-    }
-    
     /// <summary>
     /// Parse a line into a treasur cell and add to the map.
     /// </summary>

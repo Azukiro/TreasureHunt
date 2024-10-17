@@ -13,17 +13,6 @@ namespace TreasureMap.Parsers.DataParsers;
 [Parsable(typeof(Adventurer))]
 public class AdventurerParser : IDataParser
 {
-    private static AdventurerParser? _instance;
-
-    private AdventurerParser()
-    {
-    }
-
-    public static ISingleton GetInstance()
-    {
-        return _instance ??= new AdventurerParser();
-    }
-
     /// <summary>
     /// Parse a line into an adventurer and add to the map. 
     /// </summary>

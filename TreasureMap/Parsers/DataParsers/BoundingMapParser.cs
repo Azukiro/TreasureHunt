@@ -11,17 +11,6 @@ namespace TreasureMap.Parsers.DataParsers;
 [Parsable(typeof(BoundingBox))]
 public class BoundingMapParser : IDataParser
 {
-    private static BoundingMapParser? _instance;
-
-    private BoundingMapParser()
-    {
-    }
-
-    public static ISingleton GetInstance()
-    {
-        return _instance ??= new BoundingMapParser();
-    }
-    
     /// <summary>
     /// Parsing a line into a bounding map and add to the map. 
     /// </summary>

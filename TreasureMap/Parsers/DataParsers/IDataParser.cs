@@ -6,7 +6,7 @@ namespace TreasureMap.Parsers.DataParsers;
 /// <summary>
 ///  Interface for data parsers.
 /// </summary>
-public interface IDataParser : ISingleton
+public interface IDataParser
 {
     /// <summary>
     ///  Parses a line of data.

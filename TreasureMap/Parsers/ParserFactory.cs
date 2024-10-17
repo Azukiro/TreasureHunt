@@ -12,6 +12,6 @@ public static class ParserFactory
 {
     public static IDataParser GetParser(Type modelType)
     {
-        return (IDataParser)AttributeFactory.GetInstance<ParsableAttribute>(modelType);
+        return AttributeFactory.GetInstance<IDataParser,ParsableAttribute>(modelType);
     }
 }
