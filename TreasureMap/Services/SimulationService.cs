@@ -46,9 +46,9 @@ public class SimulationService(
             }
     }
 
-    public void Save()
+    public string Save()
     {
         Writer writer = new(stateService);
-        Console.WriteLine(writer.ExportResult());
+        return writer.ExportResult();
     }
 }

@@ -19,5 +19,5 @@ public interface ISimulationService
    /// <summary>
    ///     Save the game.
    /// </summary>
-   void Save();
+   string Save();
 }

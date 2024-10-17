@@ -17,7 +17,7 @@ public class UniquePositionInMap : ValidationAttribute
             var stateService = (IStateService?) validationContext.GetService(typeof(IStateService));
             if (stateService == null) return new ValidationResult("State service not available.");
 
-            if (stateService.GetCells().Where(c => !ReferenceEquals(c, value))
+            if (stateService.GetCells().Where(c => !ReferenceEquals(c.Position, value))
                 .Any(c => c.Position.X == position.X && c.Position.Y == position.Y))
                 return new ValidationResult($"Position ({position.X}, {position.Y}) is already taken.");
         }

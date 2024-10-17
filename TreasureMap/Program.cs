@@ -1,16 +1,13 @@
 ﻿using TreasureMap.Services;
 using TreasureMap.Stategies;
+using TreasureMap.Utils;
 
-var map = "C - 3 - 4\n" +
-          "M - 1 - 0\n" +
-          "M - 2 - 1\n" +
-          "T - 0 - 3 - 2\n" +
-          "T - 1 - 3 - 3\n" +
-          "A - Lara - 1 - 1 - S - AADADAGGA";
+//Initialize files
+var map = FileHelper.Read(args[0]);
+var outputPath = args[1];
 
 //Initialize the services
 IStateService stateService = StateService.Instance;
-
 IMapService mapService = new MapService(stateService);
 IMovementStrategy moveForwardStrategy = new MoveForwardStrategy(mapService, stateService);
 IMovementStrategy turnRightStrategy = new TurnRightStrategy();
@@ -21,7 +18,11 @@ SimulationService simulationService =
 //Play the simulation
 simulationService.Load(map);
 simulationService.Launch();
-simulationService.Save();
+var save = simulationService.Save();
+
+//Write the output
+FileHelper.Write(outputPath, save);
+Console.WriteLine($"The output file is available at: {Path.GetFullPath(outputPath)}");
 
 //Wait 
 Console.ReadLine();

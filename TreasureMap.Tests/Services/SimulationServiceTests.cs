@@ -77,18 +77,16 @@ A - Lara - 1 - 1 - S - AADADAGGA";
         _mockStateService.Setup(s => s.GetAdventurers()).Returns([adventurer]);
         _mockStateService.Setup(s => s.GetCells()).Returns([treasureCell, mountainCell]);
         _mockStateService.Setup(s => s.GetBoundingBox()).Returns(boundingBox);
-
-        using var consoleOutput = new StringWriter();
-        Console.SetOut(consoleOutput);
-
         // Act
-        _simulationService.Save();
+        var output = _simulationService.Save();
 
         // Assert
-        var result = consoleOutput.ToString();
-        Assert.Contains("C - 3 - 4", result);
-        Assert.Contains("M - 1 - 0", result);
-        Assert.Contains("T - 0 - 3 - 3", result);
-        Assert.Contains("A - Lara - 0 - 3 - S - 0", result);
+        var result = @"
+C - 3 - 4
+M - 1 - 0
+T - 0 - 3 - 3
+A - Edward - 0 - 3 - S - 0
+";
+        Assert.Equal(result, output);
     }
 }
