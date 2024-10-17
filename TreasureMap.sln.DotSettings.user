@@ -1,0 +1,21 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=1c8f1f72_002D3073_002D4cc4_002Da7c5_002Db7e88017cb9f/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="IsInsideMap_ShouldReturnExpectedResult_WhenPositionIsChecked #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::795D7B47-9E13-4393-AEE1-A93FDD6C6C51::net8.0::TreasureMap.Tests.Services.MapServiceTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=224787c6_002D0f72_002D4094_002D8871_002Ddf6ff73266e5/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="MapServiceTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::3792099F-9900-49D3-8FE8-E36DB0C5B5AC::net8.0::TreasureMap.Tests.Services.MapServiceTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=7a837326_002Dbf79_002D4c2c_002Db3be_002D2a36f1e58dd4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ValidateTreasureCells_ShouldThrowValidationException_WhenValidationTreasureCountFails" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::795D7B47-9E13-4393-AEE1-A93FDD6C6C51::net8.0::TreasureMap.Tests.Services.MapServiceTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=adf5e86a_002D26a8_002D49d5_002Db43d_002D36bb672ec570/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="IsInsideMap_ShouldReturnExpectedResult_WhenPositionIsChecked" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::795D7B47-9E13-4393-AEE1-A93FDD6C6C51::net8.0::TreasureMap.Tests.Services.StateServiceTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
