@@ -7,11 +7,8 @@ namespace TreasureMap.Stategies;
 /// <summary>
 /// Strategy to move forward.
 /// </summary>
-public class MoveForwardStrategy : IMovementStrategy
+public class MoveForwardStrategy(IMapService mapService, IStateService stateService) : IMovementStrategy
 {
-    
-    private readonly IMapService _mapService = MapService.Instance;
-
     public void Execute(Adventurer adventurer)
     {
         var newPosition = adventurer.Position;
@@ -31,9 +28,9 @@ public class MoveForwardStrategy : IMovementStrategy
                 break;
         }
 
-        if (_mapService.CanMoveAdventurer(adventurer, newPosition))
+        if (mapService.CanMoveAdventurer(adventurer, newPosition))
         {
-            var cell = _mapService.GetCell(newPosition);
+            var cell = stateService.GetCell(newPosition);
             adventurer.Position = newPosition;
             cell?.MoveTo(adventurer);
         }

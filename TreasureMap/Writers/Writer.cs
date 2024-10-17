@@ -7,9 +7,9 @@ namespace TreasureMap.Writers;
 /// </summary>
 public class Writer
 {
-    private readonly IMapService _mapService;
+    private readonly IStateService _mapService;
 
-    public Writer(IMapService mapService)
+    public Writer(IStateService mapService)
     {
         _mapService = mapService;
     }

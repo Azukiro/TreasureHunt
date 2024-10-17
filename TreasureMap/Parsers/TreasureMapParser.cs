@@ -11,14 +11,17 @@ namespace TreasureMap.Parsers;
 public class TreasureMapParser
 {
     private readonly IMapService _mapService;
-    
+    private readonly IStateService _stateService;
+
     /// <summary>
     /// Constructor
     /// </summary>
     /// <param name="mapService"></param>
-    public TreasureMapParser(IMapService mapService)
+    /// <param name="stateService"></param>
+    public TreasureMapParser(IMapService mapService, IStateService stateService)
     {
         _mapService = mapService;
+        _stateService = stateService;
     }
     
     private static readonly Dictionary<string, Type> TypeMappings = new(){
@@ -42,12 +45,12 @@ public class TreasureMapParser
                 continue;
             }
             var type = parts[0];
-            if (!TypeMappings.ContainsKey(type))
+            if (!TypeMappings.TryGetValue(type, out var mapping))
             {
                 continue;
             }
-            var parser = ParserFactory.GetParser(TypeMappings[type]);
-            parser.Parse(parts, _mapService);
+            var parser = ParserFactory.GetParser(mapping);
+            parser.Parse(parts, _stateService);
         }
         
         _mapService.ValidateMap();

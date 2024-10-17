@@ -12,6 +12,6 @@ public interface IDataParser
     ///  Parses a line of data.
     /// </summary>
     /// <param name="line"></param>
-    /// <param name="mapService"></param>
-    void Parse(string[] line, IMapService mapService);
+    /// <param name="stateService"></param>
+    void Parse(string[] line, IStateService stateService);
 }

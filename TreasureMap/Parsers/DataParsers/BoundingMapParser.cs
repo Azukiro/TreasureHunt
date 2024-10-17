@@ -15,11 +15,11 @@ public class BoundingMapParser : IDataParser
     /// Parsing a line into a bounding map and add to the map. 
     /// </summary>
     /// <param name="line"></param>
-    /// <param name="mapService"></param>
-    public void Parse(string[] line, IMapService mapService)
+    /// <param name="stateService"></param>
+    public void Parse(string[] line, IStateService stateService)
     {
         var width = int.Parse(line[1]);
         var height = int.Parse(line[2]);
-        mapService.SetBoundingBox(new BoundingBox(width,height));
+        stateService.SetBoundingBox(new BoundingBox(width,height));
     }
 }

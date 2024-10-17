@@ -9,27 +9,27 @@ namespace TreasureMap.Services;
 /// <summary>
 /// Service for the simulation.
 /// </summary>
-public class SimulationService(IMapService mapService) : ISimulationService
+public class SimulationService(IMapService mapService,IStateService stateService) : ISimulationService
 {
     /// <summary>
     /// The strategies for the movements.
     /// </summary>
     private readonly Dictionary<Movement, IMovementStrategy> _strategies = new()
     {
-        { Movement.A, new MoveForwardStrategy() },
+        { Movement.A, new MoveForwardStrategy(mapService, stateService) },
         { Movement.D, new TurnRightStrategy() },
         { Movement.G, new TurnLeftStrategy() }
     };
 
     public void Load(string map)
     {
-        var parser = new TreasureMapParser(mapService);
+        var parser = new TreasureMapParser(mapService,stateService);
         parser.Parse(map.Split('\n'));
     }
 
     public void Launch()
     {
-        var adventurers = mapService.GetAdventurers();
+        var adventurers = stateService.GetAdventurers();
         while(adventurers.Any(adventurer => adventurer.Movements.Any()))
         {
             foreach (var adventurer in adventurers)
@@ -50,7 +50,7 @@ public class SimulationService(IMapService mapService) : ISimulationService
 
     public void Save()
     {
-        Writer writer = new(mapService);
+        Writer writer = new(stateService);
         Console.WriteLine(writer.ExportResult());
     }
 }

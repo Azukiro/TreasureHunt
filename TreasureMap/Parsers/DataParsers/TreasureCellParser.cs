@@ -15,12 +15,12 @@ public class TreasureCellParser : IDataParser
     /// Parse a line into a treasur cell and add to the map.
     /// </summary>
     /// <param name="line"></param>
-    /// <param name="mapService"></param>
-    public void Parse(string[] line, IMapService mapService)
+    /// <param name="stateService"></param>
+    public void Parse(string[] line, IStateService stateService)
     {
         var x = int.Parse(line[1]);
         var y = int.Parse(line[2]);
         var treasureCount = int.Parse(line[3]);
-        mapService.AddCell(new TreasureCell(x, y, treasureCount));
+        stateService.AddCell(new TreasureCell(x, y, treasureCount));
     }
 }
