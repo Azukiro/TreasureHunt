@@ -1,7 +1,7 @@
 ﻿namespace TreasureMap.Models.Cells;
 
 /// <summary>
-/// Class representing a plane cell.
+///     Class representing a plane cell.
 /// </summary>
 public class PlaneCell : Cell
 {

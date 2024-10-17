@@ -1,7 +1,7 @@
 ﻿namespace TreasureMap.Utils;
 
 /// <summary>
-/// Helper class to validate objects.
+///     Helper class to validate objects.
 /// </summary>
 public class SimpleServiceProvider(Dictionary<Type, object> services) : IServiceProvider
 {

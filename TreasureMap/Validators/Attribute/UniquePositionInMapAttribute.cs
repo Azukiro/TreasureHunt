@@ -5,7 +5,7 @@ using TreasureMap.Services;
 namespace TreasureMap.Validators.Attribute;
 
 /// <summary>
-/// Attribute to validate that a position is unique in the map.
+///     Attribute to validate that a position is unique in the map.
 /// </summary>
 [AttributeUsage(AttributeTargets.Property)]
 public class UniquePositionInMap : ValidationAttribute
@@ -14,16 +14,12 @@ public class UniquePositionInMap : ValidationAttribute
     {
         if (value is Position position)
         {
-            var stateService = (IStateService?)validationContext.GetService(typeof(IStateService));
-            if (stateService == null)
-            {
-                return new ValidationResult("State service not available.");
-            }
+            var stateService = (IStateService?) validationContext.GetService(typeof(IStateService));
+            if (stateService == null) return new ValidationResult("State service not available.");
 
-            if(stateService.GetCells().Where(c=>!object.ReferenceEquals(c,value)).Any(c => c.Position.X == position.X && c.Position.Y == position.Y))
-            {
+            if (stateService.GetCells().Where(c => !ReferenceEquals(c, value))
+                .Any(c => c.Position.X == position.X && c.Position.Y == position.Y))
                 return new ValidationResult($"Position ({position.X}, {position.Y}) is already taken.");
-            }
         }
 
         return ValidationResult.Success;

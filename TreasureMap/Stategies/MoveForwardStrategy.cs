@@ -5,7 +5,7 @@ using TreasureMap.Services;
 namespace TreasureMap.Stategies;
 
 /// <summary>
-/// Strategy to move forward.
+///     Strategy to move forward.
 /// </summary>
 public class MoveForwardStrategy(IMapService mapService, IStateService stateService) : IMovementStrategy
 {

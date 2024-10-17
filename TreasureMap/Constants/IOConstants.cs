@@ -1,7 +1,7 @@
 ﻿namespace TreasureMap.Constants;
 
 /// <summary>
-/// Constants for the IO file format.
+///     Constants for the IO file format.
 /// </summary>
 public static class IoConstants
 {

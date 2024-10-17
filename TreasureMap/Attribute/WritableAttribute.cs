@@ -1,7 +1,7 @@
 ﻿namespace TreasureMap.Attribute;
 
 /// <summary>
-/// Attribute to mark the class that will parse the data.
+///     Attribute to mark the class that will parse the data.
 /// </summary>
 [AttributeUsage(AttributeTargets.Class)]
 public class WritableAttribute : IoAttribute
@@ -10,5 +10,4 @@ public class WritableAttribute : IoAttribute
     public WritableAttribute(Type modelType) : base(modelType)
     {
     }
-
 }

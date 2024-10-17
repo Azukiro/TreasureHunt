@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using TreasureMap.Attribute;
+﻿using TreasureMap.Attribute;
 using TreasureMap.Utils;
 using TreasureMap.Writers.DataWriters;
 
@@ -9,6 +8,6 @@ public static class WriterFactory
 {
     public static IDataWriter GetWriter(Type modelType)
     {
-        return AttributeFactory.GetInstance<IDataWriter,WritableAttribute>(modelType);
+        return AttributeFactory.GetInstance<IDataWriter, WritableAttribute>(modelType);
     }
 }

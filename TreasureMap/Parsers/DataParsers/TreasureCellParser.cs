@@ -1,18 +1,17 @@
 ﻿using TreasureMap.Attribute;
 using TreasureMap.Models.Cells;
 using TreasureMap.Services;
-using TreasureMap.Utils;
 
 namespace TreasureMap.Parsers.DataParsers;
 
 /// <summary>
-/// Class responsible for parsing treasure cells. 
+///     Class responsible for parsing treasure cells.
 /// </summary>
 [Parsable(typeof(TreasureCell))]
 public class TreasureCellParser : IDataParser
 {
     /// <summary>
-    /// Parse a line into a treasur cell and add to the map.
+    ///     Parse a line into a treasur cell and add to the map.
     /// </summary>
     /// <param name="line"></param>
     /// <param name="stateService"></param>

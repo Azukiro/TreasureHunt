@@ -1,22 +1,12 @@
 ﻿namespace TreasureMap.Models;
 
 /// <summary>
-///  Class representing a position on the map.
+///     Class representing a position on the map.
 /// </summary>
 public class Position
 {
     /// <summary>
-    /// X coordinates of the position.
-    /// </summary>
-    public int X { get; set; }
-
-    /// <summary>
-    /// Y coordinates of the position.
-    /// </summary>
-    public int Y { get; set; }
-
-    /// <summary>
-    /// Constructor of the position.
+    ///     Constructor of the position.
     /// </summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
@@ -25,5 +15,14 @@ public class Position
         X = x;
         Y = y;
     }
-    
+
+    /// <summary>
+    ///     X coordinates of the position.
+    /// </summary>
+    public int X { get; set; }
+
+    /// <summary>
+    ///     Y coordinates of the position.
+    /// </summary>
+    public int Y { get; set; }
 }

@@ -3,9 +3,9 @@
 namespace TreasureMap.Validators.Attribute;
 
 /// <summary>
-///  Attribute to validate that a value is not equal to a specified value.
+///     Attribute to validate that a value is not equal to a specified value.
 /// </summary>
-[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field, AllowMultiple = false)]
+[AttributeUsage(AttributeTargets.Property | AttributeTargets.Field)]
 public class NotBeAttribute : ValidationAttribute
 {
     private readonly object _forbiddenValue;
@@ -22,9 +22,7 @@ public class NotBeAttribute : ValidationAttribute
     protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
     {
         if (value != null && value.Equals(_forbiddenValue))
-        {
             return new ValidationResult($"The value cannot be {_forbiddenValue}.");
-        }
 
         return ValidationResult.Success;
     }

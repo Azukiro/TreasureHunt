@@ -4,7 +4,7 @@ using TreasureMap.Models;
 namespace TreasureMap.Stategies;
 
 /// <summary>
-/// Strategy to turn right.
+///     Strategy to turn right.
 /// </summary>
 public class TurnRightStrategy : IMovementStrategy
 {

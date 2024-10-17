@@ -5,12 +5,12 @@ using TreasureMap.Utils;
 namespace TreasureMap.Validators;
 
 /// <summary>
-/// Helper class to validate entities.
+///     Helper class to validate entities.
 /// </summary>
 public static class ValidatorHelper
 {
     /// <summary>
-    /// Validates an entity.
+    ///     Validates an entity.
     /// </summary>
     /// <param name="entity"></param>
     /// <param name="mapService"></param>
@@ -18,24 +18,22 @@ public static class ValidatorHelper
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>
     /// <exception cref="ArgumentNullException"></exception>
-    public static List<ValidationResult> Validate<T>(T entity, IMapService mapService, IStateService stateService) where T : class
+    public static List<ValidationResult> Validate<T>(T entity, IMapService mapService, IStateService stateService)
+        where T : class
     {
-        if(entity == null)
-        {
-            throw new ArgumentNullException(nameof(entity));
-        }
-        
+        if (entity == null) throw new ArgumentNullException(nameof(entity));
+
         List<ValidationResult> validationResults = [];
         var services = new Dictionary<Type, object>
         {
-            { typeof(IMapService), mapService },
-            { typeof(IStateService), stateService }
+            {typeof(IMapService), mapService},
+            {typeof(IStateService), stateService}
         };
 
         var validationContext = new ValidationContext(entity, new SimpleServiceProvider(services), null);
 
         Validator.TryValidateObject(entity, validationContext, validationResults, true);
-        
+
         return validationResults;
     }
 }

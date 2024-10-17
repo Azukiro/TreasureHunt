@@ -15,7 +15,8 @@ IMapService mapService = new MapService(stateService);
 IMovementStrategy moveForwardStrategy = new MoveForwardStrategy(mapService, stateService);
 IMovementStrategy turnRightStrategy = new TurnRightStrategy();
 IMovementStrategy turnLeftStrategy = new TurnLeftStrategy();
-SimulationService simulationService = new(mapService, stateService, moveForwardStrategy, turnRightStrategy, turnLeftStrategy);
+SimulationService simulationService =
+    new(mapService, stateService, moveForwardStrategy, turnRightStrategy, turnLeftStrategy);
 
 //Play the simulation
 simulationService.Load(map);

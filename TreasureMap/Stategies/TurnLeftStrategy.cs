@@ -1,11 +1,10 @@
 ﻿using TreasureMap.Enums;
 using TreasureMap.Models;
-using TreasureMap.Services;
 
 namespace TreasureMap.Stategies;
 
 /// <summary>
-/// Strategy to turn left.
+///     Strategy to turn left.
 /// </summary>
 public class TurnLeftStrategy : IMovementStrategy
 {
