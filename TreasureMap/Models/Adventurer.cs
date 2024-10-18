@@ -37,6 +37,7 @@ public class Adventurer
     ///     Position of the adventurer on the map.
     /// </summary>
     [PositionInMap]
+    [UniquePositionInMap]
     public Position Position { get; set; }
 
     /// <summary>

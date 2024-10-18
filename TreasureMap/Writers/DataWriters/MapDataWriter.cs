@@ -15,6 +15,6 @@ public class MapDataWriter : IDataWriter
     {
         if (data is not BoundingBox boundingBox) throw new WriterBadTypeException<BoundingBox>(typeof(object));
         return
-            $"{IoConstants.BoundingBox}{IoConstants.Separator}{boundingBox.Width}{IoConstants.Separator}{boundingBox.Height}\n";
+            $"{IoConstants.BoundingBox}{IoConstants.Separator}{boundingBox.Width}{IoConstants.Separator}{boundingBox.Height}{Environment.NewLine}";
     }
 }

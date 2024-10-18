@@ -1,28 +1,12 @@
-﻿using TreasureMap.Services;
-using TreasureMap.Stategies;
-using TreasureMap.Utils;
+﻿using TreasureMap;
 
-//Initialize files
-var map = FileHelper.Read(args[0]);
-var outputPath = args[1];
+if (args.Length < 2)
+{
+    Console.WriteLine("Usage: <inputFilePath> <outputFilePath>");
+    return;
+}
 
-//Initialize the services
-IStateService stateService = StateService.Instance;
-IMapService mapService = new MapService(stateService);
-IMovementStrategy moveForwardStrategy = new MoveForwardStrategy(mapService, stateService);
-IMovementStrategy turnRightStrategy = new TurnRightStrategy();
-IMovementStrategy turnLeftStrategy = new TurnLeftStrategy();
-SimulationService simulationService =
-    new(mapService, stateService, moveForwardStrategy, turnRightStrategy, turnLeftStrategy);
+SimulationRunner.Run(args[0], args[1]);
 
-//Play the simulation
-simulationService.Load(map);
-simulationService.Launch();
-var save = simulationService.Save();
-
-//Write the output
-FileHelper.Write(outputPath, save);
-Console.WriteLine($"The output file is available at: {Path.GetFullPath(outputPath)}");
-
-//Wait 
+// Wait for user input to close the console
 Console.ReadLine();

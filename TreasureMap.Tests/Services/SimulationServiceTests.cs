@@ -69,20 +69,19 @@ A - Lara - 1 - 1 - S - AADADAGGA";
         // Arrange
         var adventurer = new Adventurer("Edward", new Position(0, 3), Orientation.S, new Queue<Movement>());
 
-        var treasureCell = new TreasureCell(0, 3, 3);
         var mountainCell = new MountainCell(1, 0);
+        var treasureCell = new TreasureCell(0, 3, 3);
 
         var boundingBox = new BoundingBox(3, 4);
 
         _mockStateService.Setup(s => s.GetAdventurers()).Returns([adventurer]);
-        _mockStateService.Setup(s => s.GetCells()).Returns([treasureCell, mountainCell]);
+        _mockStateService.Setup(s => s.GetCells()).Returns([mountainCell, treasureCell]);
         _mockStateService.Setup(s => s.GetBoundingBox()).Returns(boundingBox);
         // Act
         var output = _simulationService.Save();
 
         // Assert
-        var result = @"
-C - 3 - 4
+        var result = @"C - 3 - 4
 M - 1 - 0
 T - 0 - 3 - 3
 A - Edward - 0 - 3 - S - 0

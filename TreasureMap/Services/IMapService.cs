@@ -16,7 +16,7 @@ public interface IMapService
     ///     Check if an adventurer can move to a position.
     /// </summary>
     /// <param name="adventurer"></param>
-    /// <param name="position"></param>
+    /// <param name="potentialPosition"></param>
     /// <returns></returns>
     bool CanMoveAdventurer(Adventurer adventurer, Position potentialPosition);
 

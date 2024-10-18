@@ -1,0 +1,7 @@
+C - 4 - 4
+M - 1 - 1
+M - 3 - 3
+T - 0 - 0 - 1
+A - Edward - 2 - 3 - S - 1
+A - Lara - 3 - 2 - S - 0
+A - Cristophe - 0 - 3 - S - 0

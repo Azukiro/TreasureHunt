@@ -29,14 +29,14 @@ public class SimulationService(
     public void Load(string map)
     {
         var parser = new TreasureMapParser(mapService, stateService);
-        parser.Parse(map.Split('\n'));
+        parser.Parse(map.Split(Environment.NewLine));
     }
 
     public void Launch()
     {
         var adventurers = stateService.GetAdventurers();
         while (adventurers.Any(adventurer => adventurer.Movements.Any()))
-            foreach (var adventurer in adventurers)
+            foreach (var adventurer in adventurers.Where(adventurer => adventurer.Movements.Any()))
             {
                 var movement = adventurer.Movements.Dequeue();
                 if (_strategies.TryGetValue(movement, out var strategy))

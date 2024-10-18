@@ -11,7 +11,7 @@ public class MoveForwardStrategy(IMapService mapService, IStateService stateServ
 {
     public void Execute(Adventurer adventurer)
     {
-        var newPosition = adventurer.Position;
+        var newPosition = new Position(adventurer.Position.X, adventurer.Position.Y);
         switch (adventurer.Orientation)
         {
             case Orientation.N:

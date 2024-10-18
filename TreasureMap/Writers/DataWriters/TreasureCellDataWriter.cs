@@ -18,6 +18,6 @@ public class TreasureCellDataWriter : IDataWriter
         if (treasureCell.TreasureCount == 0) return string.Empty;
 
         return
-            $"{IoConstants.Treasure}{IoConstants.Separator}{treasureCell.Position.X}{IoConstants.Separator}{treasureCell.Position.Y}{IoConstants.Separator}{treasureCell.TreasureCount}\n";
+            $"{IoConstants.Treasure}{IoConstants.Separator}{treasureCell.Position.X}{IoConstants.Separator}{treasureCell.Position.Y}{IoConstants.Separator}{treasureCell.TreasureCount}{Environment.NewLine}";
     }
 }

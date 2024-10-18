@@ -15,6 +15,6 @@ public class MountainCellDataWriter : IDataWriter
     {
         if (data is not MountainCell mountainCell) throw new WriterBadTypeException<MountainCell>(typeof(object));
         return
-            $"{IoConstants.Mountain}{IoConstants.Separator}{mountainCell.Position.X}{IoConstants.Separator}{mountainCell.Position.Y}\n";
+            $"{IoConstants.Mountain}{IoConstants.Separator}{mountainCell.Position.X}{IoConstants.Separator}{mountainCell.Position.Y}{Environment.NewLine}";
     }
 }
