@@ -19,12 +19,12 @@ public class Position
     /// <summary>
     ///     X coordinates of the position.
     /// </summary>
-    public int X { get; set; }
+    public int X { get; }
 
     /// <summary>
     ///     Y coordinates of the position.
     /// </summary>
-    public int Y { get; set; }
+    public int Y { get; }
 
     public override bool Equals(object? obj)
     {
@@ -32,5 +32,15 @@ public class Position
 
         var position = (Position) obj;
         return X == position.X && Y == position.Y;
+    }
+    
+    public override int GetHashCode()
+    {
+        return HashCode.Combine(X, Y);
+    }
+    
+    public static Position operator +(Position a, Position b)
+    {
+        return new Position(a.X + b.X, a.Y + b.Y);
     }
 }

@@ -16,24 +16,17 @@ public class MoveForwardStrategy(
     IStateService stateService,
     AdventurerEnterStrategyContext adventurerEnterStrategyContext) : IMovementStrategy
 {
+    readonly Dictionary<Orientation, Position> _directionOffsets = new ()
+    {
+        { Orientation.N, new Position(0, -1) },
+        { Orientation.E, new Position(1, 0) },
+        { Orientation.S, new Position(0, 1) },
+        { Orientation.W, new Position(-1, 0) }
+    };
+    
     public void Execute(Adventurer adventurer)
     {
-        var newPosition = new Position(adventurer.Position.X, adventurer.Position.Y);
-        switch (adventurer.Orientation)
-        {
-            case Orientation.N:
-                newPosition.Y -= 1;
-                break;
-            case Orientation.E:
-                newPosition.X += 1;
-                break;
-            case Orientation.S:
-                newPosition.Y += 1;
-                break;
-            case Orientation.W:
-                newPosition.X -= 1;
-                break;
-        }
+        var newPosition = _directionOffsets[adventurer.Orientation] + adventurer.Position;
 
         var positionIsValid = mapService.CanMoveAdventurer(adventurer, newPosition);
         if (!positionIsValid) return;
