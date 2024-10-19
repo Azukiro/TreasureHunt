@@ -22,7 +22,7 @@ public class TreasureMapParser
     private readonly IStateService _stateService;
 
     /// <summary>
-    ///     Constructor
+    ///     Initialize the parser with the required services.
     /// </summary>
     /// <param name="mapService"></param>
     /// <param name="stateService"></param>

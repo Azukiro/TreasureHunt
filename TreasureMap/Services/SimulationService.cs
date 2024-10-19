@@ -5,8 +5,11 @@ using TreasureMap.Writers;
 namespace TreasureMap.Services;
 
 /// <summary>
-///     Service for the simulation.
+///   Service for the simulation.
 /// </summary>
+/// <param name="mapService"></param>
+/// <param name="stateService"></param>
+/// <param name="movementStrategyContext"></param>
 public class SimulationService(
     IMapService mapService,
     IStateService stateService,

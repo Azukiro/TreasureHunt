@@ -4,6 +4,9 @@ using TreasureMap.Models.Cells;
 
 namespace TreasureMap.Services;
 
+/// <summary>
+///     Service for the state of the simulation.
+/// </summary>
 public class StateService : IStateService
 {
     #region Singleton

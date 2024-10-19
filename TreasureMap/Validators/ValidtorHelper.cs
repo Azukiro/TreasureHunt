@@ -15,9 +15,9 @@ public static class ValidatorHelper
     /// <param name="entity"></param>
     /// <param name="mapService"></param>
     /// <param name="stateService"></param>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    /// <exception cref="ArgumentNullException"></exception>
+    /// <typeparam name="T"> Type of the entity. </typeparam>
+    /// <returns> List of validation results. </returns>
+    /// <exception cref="ArgumentNullException"> Thrown when the entity is null. </exception>
     public static List<ValidationResult> Validate<T>(T entity, IMapService mapService, IStateService stateService)
         where T : class
     {

@@ -17,7 +17,7 @@ public class AdventurerParser : IDataParser
     /// </summary>
     /// <param name="lineData"></param>
     /// <param name="stateService"></param>
-    /// <exception cref="ParsingException"></exception>
+    /// <exception cref="ParsingException">Thrown when an error occurs while parsing the line.</exception>
     public void Parse(string[] lineData, IStateService stateService)
     {
         try

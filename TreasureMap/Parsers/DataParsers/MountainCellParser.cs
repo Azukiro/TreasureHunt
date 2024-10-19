@@ -1,4 +1,5 @@
 ﻿using TreasureMap.Attribute;
+using TreasureMap.Exceptions;
 using TreasureMap.Models.Cells;
 using TreasureMap.Services;
 
@@ -15,10 +16,18 @@ public class MountainCellParser : IDataParser
     /// </summary>
     /// <param name="lineData"></param>
     /// <param name="stateService"></param>
+    /// <exception cref="ParsingException">Thrown when an error occurs while parsing the line.</exception>
     public void Parse(string[] lineData, IStateService stateService)
     {
-        var x = int.Parse(lineData[1]);
-        var y = int.Parse(lineData[2]);
-        stateService.AddCell(new MountainCell(x, y));
+        try
+        {
+            var x = int.Parse(lineData[1]);
+            var y = int.Parse(lineData[2]);
+            stateService.AddCell(new MountainCell(x, y));
+        }
+        catch (Exception e)
+        {
+            throw new ParsingException(lineData, e);
+        }
     }
 }

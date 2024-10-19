@@ -9,6 +9,11 @@ namespace TreasureMap.Parsers;
 /// </summary>
 public static class ParserFactory
 {
+    /// <summary>
+    ///     Get the parser for the model type.
+    /// </summary>
+    /// <param name="modelType"> Type of the model to be parsed. </param>
+    /// <returns></returns>
     public static IDataParser GetParser(Type modelType)
     {
         return AttributeFactory.GetInstance<IDataParser, ParsableAttribute>(modelType);

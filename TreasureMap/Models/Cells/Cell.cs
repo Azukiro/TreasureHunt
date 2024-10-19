@@ -8,10 +8,10 @@ namespace TreasureMap.Models.Cells;
 public abstract class Cell
 {
     /// <summary>
-    ///     Constructor of the cell.
+    ///     Initializes a new instance of the Cell class.
     /// </summary>
-    /// <param name="x"></param>
-    /// <param name="y"></param>
+    /// <param name="x"> X position of the cell in the map. </param>
+    /// <param name="y"> Y position of the cell in the map. </param>
     protected Cell(int x, int y)
     {
         Position = new Position(x, y);

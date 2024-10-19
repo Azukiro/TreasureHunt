@@ -9,12 +9,15 @@ namespace TreasureMap.Models;
 public class Adventurer
 {
     /// <summary>
-    ///     Constructor of the adventurer.
+    ///     Initializes a new instance of the Adventurer class.
     /// </summary>
-    /// <param name="name"></param>
-    /// <param name="position"></param>
-    /// <param name="orientation"></param>
-    /// <param name="movements"></param>
+    /// <param name="name"> The name of the adventurer. Must not be null or empty. </param>
+    /// <param name="position"> The initial position of the adventurer. It must be unique and within the bounds of the map. </param>
+    /// <param name="orientation"> The initial orientation of the adventurer. </param>
+    /// <param name="movements">
+    ///     The sequence of movements the adventurer will execute. It must not be null and should include
+    ///     at least one movement.
+    /// </param>
     public Adventurer(string name, Position position, Orientation orientation, Queue<Movement> movements)
     {
         Name = name;

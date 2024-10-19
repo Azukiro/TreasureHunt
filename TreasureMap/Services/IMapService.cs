@@ -8,7 +8,7 @@ namespace TreasureMap.Services;
 public interface IMapService
 {
     /// <summary>
-    ///     Validate the map.
+    ///     Check if the map is valid.
     /// </summary>
     void ValidateMap();
 
@@ -16,7 +16,7 @@ public interface IMapService
     ///     Check if an adventurer can move to a position.
     /// </summary>
     /// <param name="adventurer"></param>
-    /// <param name="potentialPosition"></param>
+    /// <param name="potentialPosition"> Potential position to move to. </param>
     /// <returns></returns>
     bool CanMoveAdventurer(Adventurer adventurer, Position potentialPosition);
 

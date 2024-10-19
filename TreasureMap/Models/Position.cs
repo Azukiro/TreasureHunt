@@ -6,7 +6,7 @@
 public class Position
 {
     /// <summary>
-    ///     Constructor of the position.
+    ///     Initializes a new instance of the Position class.
     /// </summary>
     /// <param name="x"></param>
     /// <param name="y"></param>
@@ -33,12 +33,12 @@ public class Position
         var position = (Position) obj;
         return X == position.X && Y == position.Y;
     }
-    
+
     public override int GetHashCode()
     {
         return HashCode.Combine(X, Y);
     }
-    
+
     public static Position operator +(Position a, Position b)
     {
         return new Position(a.X + b.X, a.Y + b.Y);

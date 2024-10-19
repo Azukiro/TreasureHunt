@@ -15,6 +15,7 @@ public static class AttributeFactory
     ///     Get an instance of a class that implements ISingleton and has a specific attribute
     /// </summary>
     /// <param name="modelType">Find the attribute matching with this model type</param>
+    /// <typeparam name="TResult"> The type of the instance to return </typeparam>
     /// <typeparam name="TAttribute">The type of the attribute to look for</typeparam>
     /// <returns></returns>
     /// <exception cref="InvalidOperationException">

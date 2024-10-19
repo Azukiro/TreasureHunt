@@ -8,6 +8,8 @@ namespace TreasureMap.Services;
 /// <summary>
 ///     Service for the management of the map.
 /// </summary>
+/// <param name="stateService"></param>
+/// <param name="adventurerCanEnterStrategyContext"></param>
 public class MapService(
     IStateService stateService,
     AdventurerCanEnterStrategyContext adventurerCanEnterStrategyContext) : IMapService
@@ -21,6 +23,8 @@ public class MapService(
         return position.X >= 0 && position.X < boundingBox.Width && position.Y >= 0 && position.Y < boundingBox.Height;
     }
 
+    /// <inheritdoc />
+    /// <exception cref="ValidationException"> Thrown when the map is invalid. </exception>
     public void ValidateMap()
     {
         var cells = stateService.GetCells();

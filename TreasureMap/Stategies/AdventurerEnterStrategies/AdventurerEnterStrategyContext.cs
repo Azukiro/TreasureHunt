@@ -7,7 +7,7 @@ namespace TreasureMap.Stategies.AdventurerEnterStrategies;
 /// <summary>
 ///     Context for the adventurer enter strategies.
 /// </summary>
-/// <param name="strategiesDictionary"></param>
+/// <param name="strategiesDictionary"> A dictionary containing the strategies to execute</param>
 public class AdventurerEnterStrategyContext(Dictionary<Type, IAdventurerEnterStrategy> strategiesDictionary)
 {
     public void ExecuteStrategy(Adventurer adventurer, Cell cell)
