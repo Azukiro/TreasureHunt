@@ -23,21 +23,4 @@ public abstract class Cell
     [PositionInMap]
     [UniquePositionInMap]
     public Position Position { get; }
-
-    /// <summary>
-    ///     Determines if an adventurer can move to this cell.
-    /// </summary>
-    /// <returns></returns>
-    public virtual bool CanMoveTo()
-    {
-        return true;
-    }
-
-    /// <summary>
-    ///     Moves an adventurer to this cell.
-    /// </summary>
-    /// <param name="adventurer"></param>
-    public virtual void MoveTo(Adventurer adventurer)
-    {
-    }
 }

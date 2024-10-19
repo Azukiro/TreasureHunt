@@ -3,7 +3,7 @@ using TreasureMap.Enums;
 using TreasureMap.Models;
 using TreasureMap.Models.Cells;
 using TreasureMap.Services;
-using TreasureMap.Stategies;
+using TreasureMap.Stategies.MovementStategies;
 
 namespace TreasureMap.Tests.Services;
 
@@ -11,6 +11,7 @@ public class SimulationServiceTests
 {
     private readonly Mock<IMovementStrategy> _mockMoveForwardStrategy;
     private readonly Mock<IStateService> _mockStateService;
+    private readonly Mock<IMovementStrategy> _mockTurnLeftStrategy;
     private readonly Mock<IMovementStrategy> _mockTurnRightStrategy;
     private readonly SimulationService _simulationService;
 
@@ -21,10 +22,16 @@ public class SimulationServiceTests
 
         _mockMoveForwardStrategy = new Mock<IMovementStrategy>();
         _mockTurnRightStrategy = new Mock<IMovementStrategy>();
-        Mock<IMovementStrategy> mockTurnLeftStrategy = new();
+        _mockTurnLeftStrategy = new Mock<IMovementStrategy>();
 
+        MovementStrategyContext movementStrategyContext = new(new Dictionary<Movement, IMovementStrategy>
+        {
+            {Movement.A, _mockMoveForwardStrategy.Object},
+            {Movement.D, _mockTurnRightStrategy.Object},
+            {Movement.G, _mockTurnLeftStrategy.Object}
+        });
         _simulationService = new SimulationService(mockMapService.Object, _mockStateService.Object,
-            _mockMoveForwardStrategy.Object, _mockTurnRightStrategy.Object, mockTurnLeftStrategy.Object);
+            movementStrategyContext);
     }
 
     [Fact]
@@ -32,7 +39,7 @@ public class SimulationServiceTests
     {
         // Arrange
         var adventurer = new Adventurer("Christophe", new Position(1, 1), Orientation.S,
-            new Queue<Movement>(new[] {Movement.A, Movement.A, Movement.D, Movement.A}));
+            new Queue<Movement>(new[] {Movement.A, Movement.A, Movement.D, Movement.A, Movement.G}));
         _mockStateService.Setup(s => s.GetAdventurers()).Returns([adventurer]);
 
         // Act
@@ -41,6 +48,7 @@ public class SimulationServiceTests
         // Assert
         _mockMoveForwardStrategy.Verify(s => s.Execute(adventurer), Times.Exactly(3));
         _mockTurnRightStrategy.Verify(s => s.Execute(adventurer), Times.Once);
+        _mockTurnLeftStrategy.Verify(s => s.Execute(adventurer), Times.Once);
     }
 
     [Fact]

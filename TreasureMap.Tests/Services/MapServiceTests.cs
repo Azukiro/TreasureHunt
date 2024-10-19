@@ -4,18 +4,28 @@ using TreasureMap.Enums;
 using TreasureMap.Models;
 using TreasureMap.Models.Cells;
 using TreasureMap.Services;
+using TreasureMap.Stategies.AdventurerCanEnterStrategies;
 
 namespace TreasureMap.Tests.Services;
 
 public class MapServiceTests
 {
     private readonly MapService _mapService;
+    private readonly Mock<IAdventurerCanEnterStrategy> _mockMountainCellAdventurerCanEnterStrategy;
     private readonly Mock<IStateService> _stateServiceMock;
 
     public MapServiceTests()
     {
         _stateServiceMock = new Mock<IStateService>();
-        _mapService = new MapService(_stateServiceMock.Object);
+
+        _mockMountainCellAdventurerCanEnterStrategy = new Mock<IAdventurerCanEnterStrategy>();
+        AdventurerCanEnterStrategyContext adventurerCanEnterStrategyContext = new(
+            new Dictionary<Type, IAdventurerCanEnterStrategy>
+            {
+                {typeof(MountainCell), _mockMountainCellAdventurerCanEnterStrategy.Object}
+            });
+
+        _mapService = new MapService(_stateServiceMock.Object, adventurerCanEnterStrategyContext);
     }
 
     [Theory]
@@ -108,8 +118,9 @@ public class MapServiceTests
         bool expectedResult)
     {
         // Arrange
-        Adventurer adventurer = new("Edward", new Position(1, 2), Orientation.N, new Queue<Movement>());
-        var potentialPosition = new Position(newPositionX, newPositionY); // Outside map
+        Adventurer adventurer = new("Edward", new Position(newPositionX - 1, newPositionY), Orientation.N,
+            new Queue<Movement>());
+        var potentialPosition = new Position(newPositionX, newPositionY);
 
         List<Cell> cells = [new MountainCell(2, 4)];
 
@@ -119,9 +130,10 @@ public class MapServiceTests
             new("Christophe", new Position(1, 1), Orientation.N, new Queue<Movement>())
         ];
 
-        _stateServiceMock.Setup(s => s.GetCells()).Returns(cells);
+        _stateServiceMock.Setup(s => s.GetCell(new Position(2, 4))).Returns(cells[0]);
         _stateServiceMock.Setup(s => s.GetAdventurers()).Returns(adventurers);
         _stateServiceMock.Setup(s => s.GetBoundingBox()).Returns(new BoundingBox(5, 5));
+        _mockMountainCellAdventurerCanEnterStrategy.Setup(s => s.Execute(adventurer, cells[0])).Returns(false);
 
         // Act
         var result = _mapService.CanMoveAdventurer(adventurer, potentialPosition);

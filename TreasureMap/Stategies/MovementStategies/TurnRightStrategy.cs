@@ -1,7 +1,7 @@
 ﻿using TreasureMap.Enums;
 using TreasureMap.Models;
 
-namespace TreasureMap.Stategies;
+namespace TreasureMap.Stategies.MovementStategies;
 
 /// <summary>
 ///     Strategy to turn right.

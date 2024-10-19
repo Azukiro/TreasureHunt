@@ -4,14 +4,6 @@
 ///     Exception thrown when a writer does not support a type.
 /// </summary>
 /// <typeparam name="T">Type manipulate by the writer</typeparam>
-public class WriterBadTypeException<T> : Exception
-{
-    /// <summary>
-    ///     Constructor
-    /// </summary>
-    /// <param name="errorType">Type of the object send to the writer</param>
-    public WriterBadTypeException(Type errorType) : base(
-        $"Writer {typeof(T).Name} does not support type {errorType.Name}")
-    {
-    }
-}
+/// <param name="errorType">Type that the writer does not support</param>
+public class WriterBadTypeException<T>(Type errorType) : Exception(
+    $"Writer {typeof(T).Name} does not support type {errorType.Name}");

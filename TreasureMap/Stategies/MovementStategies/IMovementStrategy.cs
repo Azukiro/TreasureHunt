@@ -1,6 +1,6 @@
 ﻿using TreasureMap.Models;
 
-namespace TreasureMap.Stategies;
+namespace TreasureMap.Stategies.MovementStategies;
 
 /// <summary>
 ///     Interface for the movement strategy.

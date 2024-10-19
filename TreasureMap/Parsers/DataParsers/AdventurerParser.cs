@@ -15,27 +15,27 @@ public class AdventurerParser : IDataParser
     /// <summary>
     ///     Parse a line into an adventurer and add to the map.
     /// </summary>
-    /// <param name="line"></param>
+    /// <param name="lineData"></param>
     /// <param name="stateService"></param>
     /// <exception cref="ParsingException"></exception>
-    public void Parse(string[] line, IStateService stateService)
+    public void Parse(string[] lineData, IStateService stateService)
     {
         try
         {
-            var name = line[1];
-            var x = int.Parse(line[2]);
-            var y = int.Parse(line[3]);
-            var orientation = Enum.Parse<Orientation>(line[4]);
+            var name = lineData[1];
+            var x = int.Parse(lineData[2]);
+            var y = int.Parse(lineData[3]);
+            var orientation = Enum.Parse<Orientation>(lineData[4]);
 
             var queue = new Queue<Movement>();
-            foreach (var c in line[5]) queue.Enqueue(Enum.Parse<Movement>(c.ToString()));
+            foreach (var c in lineData[5]) queue.Enqueue(Enum.Parse<Movement>(c.ToString()));
 
             var adventurer = new Adventurer(name, new Position(x, y), orientation, queue);
             stateService.AddAdventurer(adventurer);
         }
         catch (Exception e)
         {
-            throw new ParsingException(line, e);
+            throw new ParsingException(lineData, e);
         }
     }
 }

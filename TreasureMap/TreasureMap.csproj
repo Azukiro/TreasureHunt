@@ -11,6 +11,13 @@
         <None Update="Assets\input.txt">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
+        <None Update="NLog.config">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="NLog" Version="5.3.4"/>
     </ItemGroup>
 
 </Project>

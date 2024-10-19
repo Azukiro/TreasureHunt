@@ -10,7 +10,7 @@ public interface IDataParser
     /// <summary>
     ///     Parses a line of data.
     /// </summary>
-    /// <param name="line"></param>
+    /// <param name="lineData"></param>
     /// <param name="stateService"></param>
-    void Parse(string[] line, IStateService stateService);
+    void Parse(string[] lineData, IStateService stateService);
 }

@@ -1,6 +1,5 @@
-﻿using TreasureMap.Enums;
-using TreasureMap.Parsers;
-using TreasureMap.Stategies;
+﻿using TreasureMap.Parsers;
+using TreasureMap.Stategies.MovementStategies;
 using TreasureMap.Writers;
 
 namespace TreasureMap.Services;
@@ -11,21 +10,9 @@ namespace TreasureMap.Services;
 public class SimulationService(
     IMapService mapService,
     IStateService stateService,
-    IMovementStrategy moveForwardStrategy,
-    IMovementStrategy turnRightStrategy,
-    IMovementStrategy turnLeftStrategy)
+    MovementStrategyContext movementStrategyContext)
     : ISimulationService
 {
-    /// <summary>
-    ///     The strategies for the movements.
-    /// </summary>
-    private readonly Dictionary<Movement, IMovementStrategy> _strategies = new()
-    {
-        {Movement.A, moveForwardStrategy},
-        {Movement.D, turnRightStrategy},
-        {Movement.G, turnLeftStrategy}
-    };
-
     public void Load(string map)
     {
         var parser = new TreasureMapParser(mapService, stateService);
@@ -39,10 +26,7 @@ public class SimulationService(
             foreach (var adventurer in adventurers.Where(adventurer => adventurer.Movements.Any()))
             {
                 var movement = adventurer.Movements.Dequeue();
-                if (_strategies.TryGetValue(movement, out var strategy))
-                    strategy.Execute(adventurer);
-                else
-                    throw new ArgumentOutOfRangeException();
+                movementStrategyContext.ExecuteStrategy(movement, adventurer);
             }
     }
 

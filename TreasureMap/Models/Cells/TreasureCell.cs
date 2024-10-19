@@ -14,14 +14,5 @@ public class TreasureCell : Cell
     }
 
     [Range(1, int.MaxValue, ErrorMessage = "Treasure count must be greater than 0.")]
-    public int TreasureCount { get; private set; }
-
-    public override void MoveTo(Adventurer adventurer)
-    {
-        if (TreasureCount > 0)
-        {
-            adventurer.TreasureCollected += 1;
-            TreasureCount -= 1;
-        }
-    }
+    public int TreasureCount { get; set; }
 }
