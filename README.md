@@ -12,6 +12,7 @@ For full details on the problem and requirements, refer to the instructions in t
 - **Language**: C# 12.0
 - **Framework**: .NET 8.0
 - **Testing**: XUnit
+- **Logging**: NLog
  
 ## Prerequisites
 
@@ -21,6 +22,7 @@ Before you begin, make sure you have the following installed:
 - **IDE** (Choose one):
   - Visual Studio 2022 (or later) with .NET Desktop Development support and unit testing tools.
   - Rider (JetBrains) with .NET Desktop Development support and unit testing tools.
+
 ## How to Run the Project
 
 ### From the Command Line
@@ -35,7 +37,7 @@ Before you begin, make sure you have the following installed:
     ```
 3. **Run the application**:
     ```bash
-   dotnet run --project Path/To/YourProject
+   dotnet run --project Path/To/YourProject <inputFile> <outputFile>
     ```
 
 ### From Visual Studio
@@ -76,7 +78,11 @@ Before you begin, make sure you have the following installed:
 3. Click **Run All** to execute all tests.
 
 
+## Log Configuration
 
+The application logs information about the execution to a file named `.\log\treasure-map.log`. The log file is created in the same directory as the executable. The log file contains information about the application's execution, such as the start and end of the program and any errors that occurred during execution.
+
+To configure the logging settings, modify the `NLog.config` file located in the root directory of the project. For more details on configuring NLog, refer to the [NLog documentation](https://nlog-project.org/config/).
 
 ## Authors
 
